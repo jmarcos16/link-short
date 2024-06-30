@@ -11,8 +11,9 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->string('hash')->unique();
+            $table->string('title');
+            $table->string('original_url');
+            $table->string('short_url')->unique();
             $table->integer('clicks')->default(0);
             $table->foreignIdFor(User::class);
             $table->integer('last_count')->default(0);

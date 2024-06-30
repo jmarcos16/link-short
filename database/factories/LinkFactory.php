@@ -9,8 +9,9 @@ class LinkFactory extends Factory
     public function definition(): array
     {
         return [
-            'url' => $this->faker->url,
-            'hash' => $this->faker->unique()->slug,
+            'title' => $this->faker->sentence,
+            'original_url' => $this->faker->url,
+            'short_url' => $this->faker->unique()->slug(1),
             'clicks' => $this->faker->numberBetween(0, 1000),
             'user_id' => 1,
             'last_count' => $this->faker->numberBetween(0, 1000),
