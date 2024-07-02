@@ -3,13 +3,14 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { CheckIcon, ClockIcon, EllipsisVerticalIcon, PencilSquareIcon, EyeIcon } from '@heroicons/vue/24/outline'
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+import Pagination from '@/Components/Pagination.vue';
 import moment from 'moment';
 defineProps(['tickets']);
 </script>
 <template>
     <AuthenticatedLayout>
       <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-        <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
+        <div class="overflow-hidden rounded-lg border border-gray-200">
           <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
             <thead class="bg-gray-50">
               <tr>
@@ -22,7 +23,7 @@ defineProps(['tickets']);
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-                <tr v-for="ticket in tickets" :key="ticket.id">
+                <tr v-for="ticket in tickets.data" :key="ticket.id">
                     <td class="px-6 py-4">{{ ticket.id }}</td>
                     <td class="px-6 py-4">{{ ticket.title }}</td>
                     <td class="px-6 py-4">
@@ -72,6 +73,9 @@ defineProps(['tickets']);
                 </tr>
             </tbody>
           </table>
+          <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+              <Pagination :pagination="tickets" />
+          </div>
         </div>
       </div>
     </AuthenticatedLayout>
