@@ -17,7 +17,7 @@ class TicketController extends Controller
 
     public function create()
     {
-        //
+        return Inertia::render('Tickets/Create');
     }
 
     public function store(Request $request)

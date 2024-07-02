@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Foundation\Application;
@@ -25,10 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::resource('links', LinkController::class)
-    ->only(['index', 'store', 'show', 'destroy'])
-    ->middleware('auth');
 
 Route::resource('tickets', TicketController::class)
     ->middleware('auth');
