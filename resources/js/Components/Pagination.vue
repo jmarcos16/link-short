@@ -1,12 +1,8 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline';
-import { computed } from 'vue';
-
 defineProps({
     pagination: Object,
 })
-
 </script>
 <template>
     <div v-if="pagination.total > 0"
@@ -25,12 +21,15 @@ defineProps({
             </div>
             <div>
                 <nav aria-label="Pagination">
-                    <ul class="relative flex justify-center divide-x border rounded">
+                    <ul class="relative flex justify-center divide-x border rounded overflow-hidden">
                         <template v-for="(page, index) in pagination.links">
                             <li>
-                                <Link :key="index" :href="page.url"
-                                    class="flex items-center justify-center px-4 py-2 text-sm" v-html="page.label"
-                                    :class="page.active ? 'bg-gray-100' : 'bg-white'" />
+                                <Link
+                                    :key="index"
+                                    :href="page.url"
+                                    class="flex items-center justify-center px-4 py-2 text-sm"
+                                    v-html="page.label"
+                                    :class="page.active ? 'bg-gray-50' : 'bg-white'" />
                             </li>
                         </template>
                     </ul>

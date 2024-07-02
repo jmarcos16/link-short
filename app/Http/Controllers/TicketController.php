@@ -11,7 +11,7 @@ class TicketController extends Controller
     public function index()
     {
         return Inertia::render('Tickets/Index', [
-            'tickets' => Ticket::paginate(5)
+            'tickets' => Ticket::paginate(10)
         ]);
     }
 

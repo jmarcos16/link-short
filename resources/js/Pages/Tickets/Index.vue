@@ -73,7 +73,8 @@ defineProps(['tickets']);
                 </tr>
             </tbody>
           </table>
-          <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+          <div v-if="tickets.total > tickets.per_page"
+            class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
               <Pagination :pagination="tickets" />
           </div>
         </div>
