@@ -11,7 +11,10 @@ class TicketController extends Controller
     public function index()
     {
         return Inertia::render('Tickets/Index', [
-            'tickets' => Ticket::paginate(10)
+            'tickets' => Ticket::query()
+                ->when(request('search'), fn($query, $search) => $query->where('title', 'like', '%'.$search.'%'))
+                ->paginate(10),
+            'filters' => request()->all('search'),
         ]);
     }
 
