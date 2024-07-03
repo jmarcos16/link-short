@@ -77,11 +77,12 @@ defineProps(['tickets']);
                     </TableCell>
                 </TableRow>
             </TableBody>
+            <template #pagination>
+                <div v-if="tickets.total > tickets.per_page" class="p-2 bg-white border-t">
+                    <Pagination :pagination="tickets" />
+                </div>
+            </template>
         </Table>
-            <!-- <div v-if="tickets.total > tickets.per_page"
-              class="mt-2">
-                <Pagination :pagination="tickets" />
-            </div> -->
       </div>
     </AuthenticatedLayout>
   </template>

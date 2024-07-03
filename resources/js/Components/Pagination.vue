@@ -1,5 +1,6 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import SecondaryButton from './SecondaryButton.vue';
 defineProps({
     pagination: Object,
 })
@@ -24,12 +25,16 @@ defineProps({
                     <ul class="relative flex justify-center divide-x border rounded overflow-hidden">
                         <template v-for="(page, index) in pagination.links">
                             <li>
-                                <Link
+                                <Link v-if="page.url"
                                     :key="index"
                                     :href="page.url"
                                     class="flex items-center justify-center px-4 py-2 text-sm"
                                     v-html="page.label"
                                     :class="page.active ? 'bg-gray-50' : 'bg-white'" />
+                                <button v-else
+                                    class="flex items-center bg-gray-50 justify-center px-4 py-2 text-sm text-gray-700"
+                                    v-html="page.label"
+                                />
                             </li>
                         </template>
                     </ul>
