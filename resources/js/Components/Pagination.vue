@@ -1,6 +1,5 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
-import SecondaryButton from './SecondaryButton.vue';
 defineProps({
     pagination: Object,
 })
@@ -22,7 +21,7 @@ defineProps({
             </div>
             <div>
                 <nav aria-label="Pagination">
-                    <ul class="relative flex justify-center divide-x border rounded overflow-hidden">
+                    <ul class="relative flex justify-center divide-x bg-white shadow border rounded overflow-hidden">
                         <template v-for="(page, index) in pagination.links">
                             <li>
                                 <Link v-if="page.url"
