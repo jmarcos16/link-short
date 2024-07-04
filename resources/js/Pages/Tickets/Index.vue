@@ -17,6 +17,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { watch, ref } from 'vue';
 import debounce from 'lodash.debounce'
 import { router } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
     tickets: Object,
@@ -46,11 +47,11 @@ watch(search, debounce((value) => {
                 class="sm:w-1/3"
                 placeholder="Search tickets..." />
 
-            <PrimaryButton  href="route('tickets.create')">
-                <div class="flex items center gap-2">
+            <PrimaryButton>
+                <Link :href="route('tickets.create')" class="flex items center gap-2">
                     <PlusIcon class="h-4 w-4" />
                     Create Ticket
-                </div>
+                </Link>
             </PrimaryButton>
         </div>
         <Table>
