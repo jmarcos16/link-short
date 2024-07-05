@@ -25,7 +25,21 @@ class TicketController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:255'],
+            'content' => ['required'],
+        ]);
+
+        $ticket = Ticket::create([
+            'title' => $request->title,
+            'user_id' => auth()->id(),
+        ]);
+
+        $ticket->content()->create([
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('tickets.index');
     }
 
     public function show(Ticket $ticket)
