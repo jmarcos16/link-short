@@ -65,7 +65,7 @@ watch(search, debounce((value) => {
             </TableHeader>
             <TableBody>
                 <TableRow v-for="ticket in tickets.data" :key="ticket.id">
-                    <TableCell class="px-6 py-4">{{ ticket.id }}</TableCell>
+                    <TableCell class="px-6 py-4"># {{ ticket.id }}</TableCell>
                     <TableCell class="px-6 py-4">{{ ticket.title }}</TableCell>
                     <TableCell class="px-6 py-4">
                     <span :class="ticket.status == 'closed' ? 'bg-green-50 text-green-600 border border-green-200' : 'bg-yellow-50 text-yellow-600 border border-yellow-200'"
@@ -87,10 +87,10 @@ watch(search, debounce((value) => {
                                 </template>
 
                                 <template #content>
-                                    <DropdownLink :href="route('profile.edit')">
+                                    <DropdownLink :href="route('tickets.show', ticket.id)">
                                         <div class="flex items center gap-2">
                                             <EyeIcon class="h-4 w-4" />
-                                            Edit
+                                            Show
                                         </div>
                                     </DropdownLink>
                                     <DropdownLink :href="route('profile.edit')">

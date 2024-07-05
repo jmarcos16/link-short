@@ -13,6 +13,7 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->longText('content');
             $table->foreignIdFor(User::class)->onDelete('cascade');
             $table->enum('status', ['open', 'closed'])->default('open');
             $table->foreignIdFor(User::class, 'assigned_to')->nullable();
